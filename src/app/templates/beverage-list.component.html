@@ -1,0 +1,6 @@
+<h2>{{title}}</h2>
+
+<select [(ngModel)]="selectedBeverage">
+    <option *ngFor="let beverage of beverages" [ngValue]="beverage">{{beverage.name}} ({{beverage.company}}): {{beverage.price}}$</option>
+</select>
+<button (click)="orderBeverage(selectedBeverage)">Commander</button>
