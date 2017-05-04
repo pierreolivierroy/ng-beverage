@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { StoreModule } from '@ngrx/store';
+import { orderReducer } from './reducers/order.reducer';
+
 import { AppComponent } from './app.component';
 import { BeverageListComponent } from './components/beverage-list.component';
 import { OrderComponent } from './components/order.component';
@@ -18,7 +21,8 @@ import { OrderService } from './services/order.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.provideStore({ order: orderReducer })
   ],
   providers: [BeverageService, OrderService],
   bootstrap: [AppComponent]
