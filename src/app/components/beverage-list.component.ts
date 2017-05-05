@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import{ Beverage } from '../models/beverage';
 import { BeverageService } from '../services/beverage.service';
 import { OrderService } from '../services/order.service';
+
+import { ADD_BEVERAGE } from '../reducers/beverage.reducer';
 
 @Component({
     selector: 'beverage-list',
@@ -14,6 +16,8 @@ export class BeverageListComponent implements OnInit {
     selectedBeverage:Beverage; 
     beverages:Beverage[];
     
+    @Output() action = new EventEmitter();
+
     constructor(private beverageService:BeverageService, private orderService:OrderService) {
     }
     
@@ -25,6 +29,7 @@ export class BeverageListComponent implements OnInit {
     }
 
     orderBeverage(beverage:Beverage) {
-        this.orderService.addBeverage(beverage);
+        console.log(`Ordering beverage: ${beverage}`);
+        this.action.emit({ type: ADD_BEVERAGE, payload: beverage });
     }
 }

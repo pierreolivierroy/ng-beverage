@@ -1,4 +1,4 @@
 <h1>{{title}}</h1>
 
-<beverage-list></beverage-list>
-<order></order>
+<beverage-list (action)="store.dispatch($event)"></beverage-list>
+<order [beverages]="beverages | async"></order>
