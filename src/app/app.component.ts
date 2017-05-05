@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Beverage } from './models/beverage';
 import { Order } from './models/order';
-import { BeverageService } from './services/beverage.service';
-import { ADD_BEVERAGE } from './reducers/beverage.reducer';
+import { INIT_ORDER } from './reducers/order.reducer';
 import { AppState } from './reducers/appstate';
 
 @Component({
@@ -13,17 +11,19 @@ import { AppState } from './reducers/appstate';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'Bienvenue à la taverne Chez Michel!';
-  order: Observable<number>;
-  beverages: Observable<Beverage[]>;
-
+  order: Observable<Order>;
+  
   constructor(public store:Store<AppState>) {
-    
-    this.beverages = store.select('beverages'); // or this.beverages = store.select(state => state.beverages);
+    this.order = store.select('order'); // or this.beverages = store.select(state => state.order);
 
-    store.subscribe(v => console.log(v));
-  }    
+    store.subscribe(s => console.log(s));
+  } 
+
+  ngOnInit() {
+    this.store.dispatch({ type: INIT_ORDER, payload: new Order() });
+  }
 }
  

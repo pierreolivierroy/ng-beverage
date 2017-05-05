@@ -4,13 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
-import { beverages } from './reducers/beverage.reducer';
+import { order } from './reducers/order.reducer';
 
 import { AppComponent } from './app.component';
 import { BeverageListComponent } from './components/beverage-list.component';
 import { OrderComponent } from './components/order.component';
 import { BeverageService } from './services/beverage.service';
-import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +21,9 @@ import { OrderService } from './services/order.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({ beverages: beverages })
+    StoreModule.provideStore({ order: order })
   ],
-  providers: [BeverageService, OrderService],
+  providers: [BeverageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

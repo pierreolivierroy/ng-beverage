@@ -1,4 +1,4 @@
 <h3>Commande #{{order.id}}</h3>
 <ul>
-    <li *ngFor="let beverage of beverages">{{beverage.name}} ({{beverage.company}}): {{beverage.price}}$</li>
+    <li *ngFor="let beverage of order.beverages">{{beverage.name}} ({{beverage.company}}): {{beverage.price}}$</li>
 </ul>

@@ -1,27 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Order } from '../models/order';
-import { Beverage } from '../models/beverage';
-import { OrderService } from '../services/order.service';
 
 @Component({
     selector: 'order',
-    templateUrl: '../templates/order.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: '../templates/order.component.html'
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent {
 
-    order:Order;
-    @Input() beverages = [];
-    // b: Observable<Beverage>;
+    @Input() order:Order;
 
-    constructor(private orderService:OrderService) {
-        this.order = new Order();
-    }
-
-    ngOnInit() {
-        // this.orderService.getBeverages().then(beverages => this.order.beverages = beverages);
-        this.order.beverages = this.beverages;
-        console.log(this.order);
-    }
+    constructor() {}
 }

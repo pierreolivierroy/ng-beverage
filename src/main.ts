@@ -6,12 +6,8 @@ import { environment } from './environments/environment';
 
 import { provideStore } from '@ngrx/store';
 
-// import { orderReducer } from 'app/reducers/order.reducer';
-
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, [
-  // provideStore({ order: orderReducer })
-]);
+platformBrowserDynamic().bootstrapModule(AppModule);
